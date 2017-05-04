@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matheusmouradev.com.github.controller.GUIController">
+    <top>
+        <Pane fx:id="topBar" prefHeight="160.0" prefWidth="1400.0" styleClass="topBar" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="46.0" layoutY="8.0" prefHeight="158.0" prefWidth="515.0" styleClass="welcometext" text="Booking">
+               <font>
+                  <Font size="64.0" />
+               </font></Label>
+            </children>
+        </Pane>
+    </top>
+   
+    <left>
+        <VBox prefHeight="660.0" prefWidth="271.0" spacing="30.0" styleClass="sideBar" BorderPane.alignment="CENTER">
+            <children>
+                <Button layoutX="13.0" layoutY="46.0" mnemonicParsing="false" onAction="#btnHome" prefHeight="119.0" prefWidth="188.0" styleClass="button" text="Home" />
+                <Button layoutX="15.0" layoutY="175.0" mnemonicParsing="false" onAction="#btnRoom" prefHeight="119.0" prefWidth="188.0" text="Rooms" />
+                <Button mnemonicParsing="false" onAction="#btnClients" prefHeight="119.0" prefWidth="188.0" text="Clients" />
+                <Button layoutX="15.0" layoutY="435.0" mnemonicParsing="false" onAction="#btnCalendar" prefHeight="119.0" prefWidth="188.0" text="Calendar" />
+            </children>
+         <padding>
+            <Insets left="40.0" top="50.0" />
+         </padding>
+        </VBox>
+    </left>
+   
+    <center>
+        <StackPane fx:id="stackConsole" styleClass="stackConsole" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <Pane fx:id="roomPane" blendMode="MULTIPLY" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="clientPane" blendMode="MULTIPLY" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="calendarPane" blendMode="MULTIPLY" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="mainPane" blendMode="MULTIPLY" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" layoutX="37.0" layoutY="3.0" prefHeight="651.0" prefWidth="1081.0" spacing="10.0">
+                     <children>
+                        <HBox prefHeight="119.0" prefWidth="1060.0" spacing="15.0">
+                           <children>
+                              <Pane fx:id="pane1" onMouseClicked="#clickOnRoomLabel" prefHeight="117.0" prefWidth="353.0" styleClass="pane">
+                                 <children>
+                                    <Label fx:id="nameLabel1" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 01" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel1" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel1" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel1" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="pane2" onMouseClicked="#clickOnRoomLabel" prefHeight="117.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel2" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 02" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel2" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel2" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel2" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="pane3" onMouseClicked="#clickOnRoomLabel" prefHeight="117.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel3" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 03" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel3" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel3" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel3" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="115.0" prefWidth="1060.0" spacing="15.0">
+                           <children>
+                              <Pane fx:id="pane4" onMouseClicked="#clickOnRoomLabel" prefHeight="200.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel4" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 04" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel4" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel4" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel4" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="pane5" onMouseClicked="#clickOnRoomLabel" prefHeight="200.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel5" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 05" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel5" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel5" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel5" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="pane6" onMouseClicked="#clickOnRoomLabel" prefHeight="200.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel6" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 06" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel6" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel6" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel6" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="121.0" prefWidth="1060.0" spacing="15.0">
+                           <children>
+                              <Pane fx:id="pane7" onMouseClicked="#clickOnRoomLabel" prefHeight="200.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel7" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 07" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel7" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel7" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel7" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="pane8" onMouseClicked="#clickOnRoomLabel" prefHeight="200.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel8" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 08" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel8" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel8" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel8" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="pane9" onMouseClicked="#clickOnRoomLabel" prefHeight="200.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel9" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 09" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel9" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel9" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel9" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="126.0" prefWidth="1060.0" spacing="15.0">
+                           <children>
+                              <Pane fx:id="pane10" onMouseClicked="#clickOnRoomLabel" prefHeight="200.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel10" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 10" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel10" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel10" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel10" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="pane11" onMouseClicked="#clickOnRoomLabel" prefHeight="200.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel11" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 11">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel11" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel11" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel11" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="pane12" onMouseClicked="#clickOnRoomLabel" prefHeight="200.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel12" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 12" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel12" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel12" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel12" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="119.0" prefWidth="1060.0" spacing="15.0">
+                           <children>
+                              <Pane fx:id="pane13" onMouseClicked="#clickOnRoomLabel" prefHeight="200.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel13" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 13" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel13" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel13" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel13" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="pane14" onMouseClicked="#clickOnRoomLabel" prefHeight="200.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel14" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 14" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel14" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel14" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel14" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="pane15" onMouseClicked="#clickOnRoomLabel" prefHeight="200.0" prefWidth="353.0" styleClass="pane">
+                                  <children>
+                                    <Label fx:id="nameLabel15" alignment="CENTER" layoutX="3.0" layoutY="3.0" prefHeight="55.0" prefWidth="185.0" text="Room 15" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Arial" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="iconLabel15" alignment="CENTER" layoutX="48.0" layoutY="57.0" prefHeight="48.0" prefWidth="48.0" />
+                                    <Label fx:id="clientLabel15" layoutX="211.0" layoutY="25.0" prefHeight="33.0" prefWidth="125.0" />
+                                    <Label fx:id="dateLabel15" layoutX="207.0" layoutY="64.0" prefHeight="33.0" prefWidth="133.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets left="20.0" top="20.0" />
+               </padding>
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin></Pane>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" right="5.0" />
+         </BorderPane.margin>
+        </StackPane>
+    </center>
+   
+</BorderPane>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/04/2017 21:36:04 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="matheusmouradev.com.github.data.Room" table="room" catalog="bookingdb" optimistic-lock="version">
+        <id name="number" type="java.lang.Integer">
+            <column name="number" />
+            <generator class="identity" />
+        </id>
+        <property name="description" type="string">
+            <column name="description" length="65535" not-null="true" />
+        </property>
+        <property name="situation" type="byte">
+            <column name="situation" not-null="true" />
+        </property>
+        <property name="bookDate" type="date">
+            <column name="bookDate" length="10" />
+        </property>
+        <property name="enterDate" type="date">
+            <column name="enterDate" length="10" />
+        </property>
+        <property name="exitDate" type="date">
+            <column name="exitDate" length="10" />
+        </property>
+        <property name="dailyAmount" type="float">
+            <column name="dailyAmount" precision="12" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
