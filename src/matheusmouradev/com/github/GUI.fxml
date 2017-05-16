@@ -37,9 +37,6 @@
     <center>
         <StackPane fx:id="stackConsole" styleClass="stackConsole" BorderPane.alignment="TOP_LEFT">
          <children>
-            <Pane fx:id="roomPane" blendMode="MULTIPLY" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="clientPane" blendMode="MULTIPLY" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="calendarPane" blendMode="MULTIPLY" prefHeight="200.0" prefWidth="200.0" />
             <Pane fx:id="mainPane" blendMode="MULTIPLY" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="CENTER">
                <children>
                   <VBox alignment="CENTER" layoutX="37.0" layoutY="3.0" prefHeight="651.0" prefWidth="1081.0" spacing="10.0">
@@ -253,6 +250,35 @@
                <StackPane.margin>
                   <Insets />
                </StackPane.margin></Pane>
+            <Pane fx:id="clientPane" blendMode="MULTIPLY" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="calendarPane" blendMode="MULTIPLY" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="roomPane" blendMode="MULTIPLY" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="roomPaneLabel" alignment="CENTER" layoutX="150.0" layoutY="10.0" prefHeight="92.0" prefWidth="431.0" textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial" size="36.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="boxRoom" layoutX="107.0" layoutY="183.0" prefHeight="53.0" prefWidth="196.0" />
+                  <Label layoutX="112.0" layoutY="141.0" prefHeight="26.0" prefWidth="84.0" text="Room" />
+                  <ChoiceBox fx:id="boxClient" layoutX="106.0" layoutY="282.0" prefHeight="55.0" prefWidth="201.0" />
+                  <Label layoutX="113.0" layoutY="252.0" prefHeight="22.0" prefWidth="79.0" text="Client" />
+                  <Button layoutX="352.0" layoutY="534.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="129.0" text="Save" />
+                  <Button layoutX="510.0" layoutY="532.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="126.0" text="Cancel" />
+                  <DatePicker fx:id="enterDatePicker" layoutX="665.0" layoutY="215.0" prefHeight="44.0" prefWidth="207.0" />
+                  <Label layoutX="674.0" layoutY="188.0" prefHeight="22.0" prefWidth="96.0" text="Enter" />
+                  <DatePicker fx:id="exitDatePicker" layoutX="667.0" layoutY="314.0" prefHeight="48.0" prefWidth="209.0" />
+                  <Label layoutX="677.0" layoutY="287.0" prefHeight="24.0" prefWidth="53.0" text="Exit" />
+                  <DatePicker fx:id="bookDatePicker" layoutX="666.0" layoutY="126.0" prefHeight="39.0" prefWidth="209.0" />
+                  <Label layoutX="671.0" layoutY="90.0" prefHeight="24.0" prefWidth="128.0" text="Reservation day" />
+                  <RadioButton layoutX="122.0" layoutY="389.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="84.0" text="Book" />
+                  <RadioButton layoutX="123.0" layoutY="418.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="64.0" text="Enter" />
+                  <TextField fx:id="dailyAmountText" layoutX="755.0" layoutY="406.0" prefHeight="25.0" prefWidth="121.0" />
+                  <TextField fx:id="totalAmountText" layoutX="755.0" layoutY="453.0" prefHeight="25.0" prefWidth="121.0" />
+                  <Label layoutX="660.0" layoutY="410.0" prefHeight="17.0" prefWidth="76.0" text="Daily amount:" />
+                  <Label layoutX="663.0" layoutY="457.0" prefHeight="17.0" prefWidth="76.0" text="Total amount:" />
+                  <Label fx:id="messageLabel" alignment="CENTER" layoutX="352.0" layoutY="462.0" prefHeight="49.0" prefWidth="280.0" />
+               </children></Pane>
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" right="5.0" />

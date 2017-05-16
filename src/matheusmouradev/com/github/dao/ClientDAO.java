@@ -28,7 +28,7 @@ public class ClientDAO {
         Session se = HibernateUtil.getSessionFactory().getCurrentSession();
         se.beginTransaction();
         
-        listClient = se.createQuery("from Room").list();
+        listClient = se.createQuery("from Client").list();
         
         se.getTransaction().commit();
         

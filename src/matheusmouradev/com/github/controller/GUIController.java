@@ -1,16 +1,28 @@
 
 package matheusmouradev.com.github.controller;
 
+
 import javafx.scene.image.Image;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import static java.time.temporal.ChronoUnit.DAYS;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import static javafx.scene.effect.BlendMode.RED;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -186,6 +198,26 @@ public class GUIController implements Initializable {
     
     List<Label> listDateLabel = new ArrayList();
     
+    //Room pane
+    @FXML
+    private Label roomPaneLabel;
+    @FXML
+    private ChoiceBox boxRoom;
+    @FXML
+    private ChoiceBox boxClient;
+    @FXML
+    private DatePicker bookDatePicker;
+    @FXML
+    private DatePicker enterDatePicker;
+    @FXML
+    private DatePicker exitDatePicker;
+    @FXML
+    private TextField dailyAmountText;
+    @FXML
+    private TextField totalAmountText;
+    @FXML
+    private Label messageLabel;        
+
     //Variables
     Booking booking = new Booking();
     
@@ -201,6 +233,7 @@ public class GUIController implements Initializable {
     @FXML
     private void btnRoom(ActionEvent event) {
         stackConsole.getChildren().setAll(roomPane);
+        clearRoomPane();
     }
     
     @FXML
@@ -212,26 +245,93 @@ public class GUIController implements Initializable {
     private void btnCalendar(ActionEvent event) {
         stackConsole.getChildren().setAll(calendarPane);
     }
-    
+        
     @FXML 
     public void clickOnRoomLabel(MouseEvent e) {
         stackConsole.getChildren().setAll(roomPane);
-        if (e.getPickResult().getIntersectedNode().getParent().getId() == null && e.getPickResult().getIntersectedNode().getParent().getId().charAt(0) == 'n') {
-            System.out.println(e.getPickResult().getIntersectedNode().getId());
-            System.out.println("loop2");
+        String id;
+        int roomNumber;
+        if (e.getPickResult().getIntersectedNode().getParent().getId() == null) {
+            id = e.getPickResult().getIntersectedNode().getId();
+            roomNumber = Character.getNumericValue(id.charAt(4));
+            try{
+                int x = Integer.valueOf(String.valueOf(roomNumber) + String.valueOf(Character.getNumericValue(id.charAt(5))));
+                roomNumber = x;
+            }catch(StringIndexOutOfBoundsException ex) {
+            }
         } else {
-            System.out.println(e.getPickResult().getIntersectedNode().getParent().getId());
+            if (e.getPickResult().getIntersectedNode().getParent().getId().charAt(0) == 'n') {
+                int number = Character.getNumericValue(e.getPickResult().getIntersectedNode().getParent().getId().charAt(9));
+                if(number == 1) {
+                    try {
+                        if(e.getPickResult().getIntersectedNode().getParent().getId().charAt(10) != 0) {
+                            int number2 = Character.getNumericValue(e.getPickResult().getIntersectedNode().getParent().getId().charAt(10));
+                            int k = Integer.valueOf(String.valueOf(number) + String.valueOf(number2));
+                            roomNumber = k;
+                        } else {
+                            roomNumber = number;
+                        }
+                    } catch (StringIndexOutOfBoundsException ex) {
+                        roomNumber = number;
+                    }
+                } else {
+                    roomNumber = number;
+                }
+            } else {
+                id = e.getPickResult().getIntersectedNode().getParent().getId();
+                roomNumber = Character.getNumericValue(id.charAt(4));
+                try{
+                    int x = Integer.valueOf(String.valueOf(roomNumber) + String.valueOf(Character.getNumericValue(id.charAt(5))));
+                    roomNumber = x;
+                }catch(StringIndexOutOfBoundsException ex) {
+                }
+            }
         }
-    }
+        fillRoomPane(roomNumber);
+        
+    }   
     
+    private void fillRoomPane(int number) {
+        boxRoom.getSelectionModel().select(number -1);
+        boxRoom.setDisable(true);
+    } 
+    
+    private void clearRoomPane() {
+        boxRoom.getSelectionModel().select(-1);
+        boxRoom.setDisable(false);
+        boxClient.getSelectionModel().select(-1);
+        boxClient.setDisable(false);
+        
+        String textBook = new Date().toString();
+        bookDatePicker.setValue(LocalDate.now(ZoneId.of("Brazil/East")));
+        bookDatePicker.setDisable(true);
+        enterDatePicker.setValue(null);
+        exitDatePicker.setValue(null);
+        
+        messageLabel.setText("");
+        messageLabel.getStyleClass().add("cleanMessage");
+    }
+       
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         stackConsole.getChildren().setAll(mainPane);
-        pane1.getStyleClass().add("pane");
         
         //Filling Name Label Array
         listNameLabel.add(nameLabel1);
         listNameLabel.add(nameLabel2);
+        listNameLabel.add(nameLabel3);
+        listNameLabel.add(nameLabel4);
+        listNameLabel.add(nameLabel5);
+        listNameLabel.add(nameLabel6);
+        listNameLabel.add(nameLabel7);
+        listNameLabel.add(nameLabel8);
+        listNameLabel.add(nameLabel9);
+        listNameLabel.add(nameLabel10);
+        listNameLabel.add(nameLabel11);
+        listNameLabel.add(nameLabel12);
+        listNameLabel.add(nameLabel13);
+        listNameLabel.add(nameLabel14);
+        listNameLabel.add(nameLabel15);
         
         //Filling Icon Label Array
         listIconLabel.add(0, iconLabel1);
@@ -283,10 +383,156 @@ public class GUIController implements Initializable {
         listDateLabel.add(dateLabel13);
         listDateLabel.add(dateLabel14);
         listDateLabel.add(dateLabel15);
+
+                
+        List<Client> dbClient = booking.readClient(); 
+        dbClient.stream().forEach((c) -> {
+            boxClient.getItems().add(c.getName());
+        });
         
+        bookDatePicker.setValue(LocalDate.now(ZoneId.of("Brazil/East")));
+        bookDatePicker.setEditable(false);
+                  
+        boxRoom.setItems(FXCollections.observableArrayList("room 01", "room 02", "room 03"
+        , "room 04", "room 05", "room 06", "room 07", "room 08", "room 09", "room 10"
+        , "room 11", "room 12", "room 13", "room 14", "room 15"));
         
         List<Room> dbRoom = booking.readRoom();
-
+        boxRoom.getSelectionModel().selectedIndexProperty().addListener((ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
+            int number = (int) newValue;
+            if(number < 0){
+                roomPaneLabel.setText("");
+            }else {
+                int number2 = number+1;
+                if (number >= 10) {
+                    roomPaneLabel.setText("Room: " + number2);
+                } else{
+                    roomPaneLabel.setText("Room: 0" + number2);
+                }  
+                Room room = dbRoom.get(number);
+                int situation = room.getSituation();
+                switch(situation) {
+                    case 0:
+                        bookDatePicker.setValue(LocalDate.now(ZoneId.of("Brazil/East")));
+                        bookDatePicker.setEditable(false);                       
+                        
+                        break;
+                    case 1:
+                        Date dateBook = room.getBookDate();
+                        String textBook = dateBook.toString();
+                        bookDatePicker.setValue(LocalDate.parse(textBook));
+                        bookDatePicker.setEditable(false);
+                        
+                        Date dateEnter = room.getEnterDate();
+                        String textEnter = dateEnter.toString();
+                        enterDatePicker.setValue(LocalDate.parse(textEnter));
+                        enterDatePicker.setEditable(false);                       
+                        
+                        Date dateExit = room.getExitDate();
+                        String textExit = dateExit.toString();
+                        exitDatePicker.setValue(LocalDate.parse(textExit));
+                        exitDatePicker.setEditable(false);
+                        
+                        boxClient.getSelectionModel().select(number);
+                        boxClient.setDisable(true);
+                                 
+                        break;
+                    case 2:
+                        dateEnter = room.getEnterDate();
+                        textEnter = dateEnter.toString();
+                        enterDatePicker.setValue(LocalDate.parse(textEnter));
+                        enterDatePicker.setEditable(false);
+                                              
+                        dateExit = room.getExitDate();
+                        textExit = dateExit.toString();
+                        exitDatePicker.setValue(LocalDate.parse(textExit));
+                        exitDatePicker.setEditable(false);
+                        
+                        break;
+                }
+            }   
+        }); 
+        
+        enterDatePicker.valueProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                
+                Room room = null;
+                if(boxRoom.getSelectionModel().getSelectedIndex() >= 0) {
+                    room = dbRoom.get(boxRoom.getSelectionModel().getSelectedIndex());
+                }
+                
+                
+                long daysBetweenEnterExit = 221;
+                long daysBetweenBookEnter = 221;
+                if(enterDatePicker.getValue() != null) {
+                    daysBetweenBookEnter = DAYS.between(bookDatePicker.getValue(), enterDatePicker.getValue());
+                } else{
+                }
+                if(daysBetweenBookEnter < 0) {
+                    messageLabel.setText("Enter can't be before Book date!");
+                    messageLabel.getStyleClass().add("errorMessage");
+                }else {
+                }
+  
+                if(exitDatePicker.getValue() != null) {
+                    daysBetweenEnterExit = DAYS.between(enterDatePicker.getValue(), exitDatePicker.getValue());
+                    if(room != null) {
+                        dailyAmountText.setText(Float.toString(room.getDailyAmount()));
+                        double result = Math.floor(room.getDailyAmount() * daysBetweenEnterExit );
+                        totalAmountText.setText(Double.toString(result));
+                    }
+                }else {      
+                }
+                if(daysBetweenEnterExit == 0) {
+                    messageLabel.setText("Enter and Exit have to be at least one day!");
+                    messageLabel.getStyleClass().add("errorMessage");
+                }else if(daysBetweenEnterExit > 0){
+                }else {
+                    messageLabel.setText("Enter can't be after exit!");
+                    messageLabel.getStyleClass().add("errorMessage");
+                }
+                if((daysBetweenEnterExit > 0) && (daysBetweenBookEnter > 0 | daysBetweenBookEnter == 0)) {
+                    messageLabel.setText("");
+                    messageLabel.getStyleClass().add("cleanMessage");
+                }
+            }
+        });
+        
+        exitDatePicker.valueProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                
+                Room room = null;
+                if(boxRoom.getSelectionModel().getSelectedIndex() >= 0) {
+                    room = dbRoom.get(boxRoom.getSelectionModel().getSelectedIndex());
+                }
+                
+                long daysBetweenEnterExit = 221;
+                if(enterDatePicker.getValue() != null) {
+                    daysBetweenEnterExit = DAYS.between(enterDatePicker.getValue(), exitDatePicker.getValue());
+                    if(room != null) {
+                        dailyAmountText.setText(Float.toString(room.getDailyAmount()));
+                        double result = Math.floor(room.getDailyAmount() * daysBetweenEnterExit );
+                        totalAmountText.setText(Double.toString(result));
+                    }
+                }else {
+                }
+                if(daysBetweenEnterExit == 0) {
+                    messageLabel.setText("Enter and Exit have to be at least one day!");
+                    messageLabel.getStyleClass().add("errorMessage");
+                }else if(daysBetweenEnterExit > 0){
+                }else {
+                    messageLabel.setText("Enter can't be after exit!");
+                    messageLabel.getStyleClass().add("errorMessage");
+                }
+                if(daysBetweenEnterExit > 0) {
+                    messageLabel.setText("");
+                    messageLabel.getStyleClass().add("cleanMessage");
+                }
+            }
+        });
+        
         for (int i=0;i<15;i++) {
             int situation = dbRoom.get(i).getSituation();
             switch(situation) {

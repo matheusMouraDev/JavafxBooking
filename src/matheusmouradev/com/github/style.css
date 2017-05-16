@@ -39,3 +39,18 @@
    -fx-fill: #818181;
    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
 }
+
+.errorMessage {
+   -fx-background-radius: 20;
+   -fx-text-fill: red;
+   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+
+.rightMessage {
+   -fx-fill: green;
+   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+
+.cleanMessage {
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0) , 0, 0.0 , 0 , 0 );
+}
