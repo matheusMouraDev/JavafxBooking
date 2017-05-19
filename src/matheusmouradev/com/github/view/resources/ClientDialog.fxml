@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:id="basePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matheusmouradev.com.github.controller.ClientDialogController">
+   <top>
+      <Pane styleClass="topBar" prefHeight="122.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="welcometext" alignment="CENTER" prefHeight="122.0" prefWidth="600.0" text="Search Client">
+               <font>
+                  <Font size="38.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <TableView fx:id="table" prefHeight="278.0" prefWidth="435.0" BorderPane.alignment="CENTER">
+        <columns> 
+          <TableColumn prefWidth="75.0" text="Id">
+            <cellValueFactory>
+                <PropertyValueFactory property="id" />
+            </cellValueFactory>
+          </TableColumn>
+          <TableColumn prefWidth="75.0" text="Name">
+            <cellValueFactory>
+                <PropertyValueFactory property="name" />
+            </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="columnRoom" prefWidth="75.0" text="Room">
+            <cellValueFactory>
+                <PropertyValueFactory property="room" />
+            </cellValueFactory>
+          </TableColumn>
+        </columns>
+      </TableView>
+   </center>
+   <right>
+      <Pane styleClass="sideBar" prefHeight="278.0" prefWidth="146.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="selectBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="120.0" text="Select" />
+            <Button fx:id="cancelBtn" layoutX="14.0" layoutY="86.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="118.0" text="Cancel" />
+         </children>
+      </Pane>
+   </right>
+</BorderPane>

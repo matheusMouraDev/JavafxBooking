@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package matheusmouradev.com.github;
+package matheusmouradev.com.github.view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,10 +19,10 @@ public class app extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("resources/GUI.fxml"));
         
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("resources/style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

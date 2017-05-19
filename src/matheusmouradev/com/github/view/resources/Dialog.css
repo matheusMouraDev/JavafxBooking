@@ -1,0 +1,56 @@
+.pane {
+    -fx-background-color:lightgray;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-style: solid;
+    -fx-effect: dropshadow(three-pass-box, black, 5, 0, 0, 0);
+}
+
+.stackConsole {
+    
+}
+
+.topBar {
+    -fx-border-width: 2;
+    -fx-border-style: solid; 
+    -fx-border-radius: 1;
+    -fx-background-radius: 1;
+}
+
+.sideBar{
+    -fx-border-width: 2;
+    -fx-border-style: hidden solid solid hidden;
+}
+
+.button {
+  -fx-background-color: #373e48;
+  -fx-background-radius: 20;
+  -fx-text-fill: white;
+}
+
+.button:pressed {
+  -fx-background-color: #ee543a, #373e48;
+  -fx-background-insets: 0, 0 2 0 0;
+}
+
+.welcometext {
+   -fx-font-size: 64px;
+   -fx-font-family: "Arial Black";
+   -fx-fill: #818181;
+   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+
+.errorMessage {
+   -fx-background-radius: 20;
+   -fx-text-fill: red;
+   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+
+.rightMessage {
+   -fx-fill: green;
+   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+
+.cleanMessage {
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0) , 0, 0.0 , 0 , 0 );
+}

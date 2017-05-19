@@ -2,6 +2,7 @@
 package matheusmouradev.com.github.controller;
 
 
+import java.io.IOException;
 import javafx.scene.image.Image;
 import java.net.URL;
 import java.time.LocalDate;
@@ -11,25 +12,35 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import static javafx.scene.effect.BlendMode.RED;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 import matheusmouradev.com.github.data.*;
 import matheusmouradev.com.github.facade.Booking;
+import matheusmouradev.com.github.view.app;
 
 /**
  *
@@ -216,7 +227,9 @@ public class GUIController implements Initializable {
     @FXML
     private TextField totalAmountText;
     @FXML
-    private Label messageLabel;        
+    private Label messageLabel;  
+    @FXML
+    private Button searchClientBtn;
 
     //Variables
     Booking booking = new Booking();
@@ -244,6 +257,28 @@ public class GUIController implements Initializable {
     @FXML
     private void btnCalendar(ActionEvent event) {
         stackConsole.getChildren().setAll(calendarPane);
+    }
+    app ap = new app();
+    
+    @FXML
+    private void searchClientDialog(ActionEvent event) {
+        try{
+            Parent root1 = FXMLLoader.load(ap.getClass().getResource("resources/ClientDialog.fxml"));
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setTitle("Search");
+            Scene scene = new Scene(root1);
+            stage.setScene(scene);  
+            String css = ap.getClass().getResource("resources/style.css").toExternalForm(); 
+            scene.getStylesheets().add(css);
+            stage.show();
+            stage.setOnCloseRequest((WindowEvent t)-> {  
+                t.consume();;
+                System.out.println(t.getSource());
+            });
+        } catch(IOException e) {      
+        }
     }
         
     @FXML 

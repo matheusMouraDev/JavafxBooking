@@ -278,7 +278,9 @@
                   <Label layoutX="660.0" layoutY="410.0" prefHeight="17.0" prefWidth="76.0" text="Daily amount:" />
                   <Label layoutX="663.0" layoutY="457.0" prefHeight="17.0" prefWidth="76.0" text="Total amount:" />
                   <Label fx:id="messageLabel" alignment="CENTER" layoutX="352.0" layoutY="462.0" prefHeight="49.0" prefWidth="280.0" />
-               </children></Pane>
+                  <Button fx:id="searchClientBtn" layoutX="323.0" layoutY="277.0" onAction="#searchClientDialog"  mnemonicParsing="false" prefHeight="60.0" prefWidth="96.0" />
+               </children>
+            </Pane>
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" right="5.0" />
